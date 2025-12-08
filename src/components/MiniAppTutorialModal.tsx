@@ -20,47 +20,43 @@ export function MiniAppTutorialModal({
 
   const steps = [
     {
-      title: "Launch tokens with streaming superpowers. Earn fees.",
+      title: "Launch Your Own Coin. Stream Daily Earnings.",
       content: (
         <div className="space-y-4">
           <TutorialStreamingAnimation />
 
           <p className="text-base text-base-content/80">
-            🚀 Launch a Base ERC-20 token with built-in staking and Superfluid
-            streaming.
+            🚀 Create your own token on Base, Optimism, Arbitrum, Polygon, or Ethereum - no complex smart contracts needed.
           </p>
 
           <p className="text-base text-base-content/80">
-            🌊 20% of the total supply is streamed to stakers over 365 days.
+            🌊 Stream a portion of your daily earnings directly to all coin holders in real-time using Superfluid.
           </p>
 
           <p className="text-base text-base-content/80">
-            💰 Earn 40% of fees on every swap.
+            💰 Build community loyalty by automatically rewarding your supporters every second.
           </p>
         </div>
       ),
     },
 
     {
-      title: "Stake to earn rewards",
+      title: "Community Members Earn Automatically",
       content: (
         <div className="space-y-4">
           <GrowthFundAnimation contributorCount={25} growthRate={2.5} />
 
           <p className="text-base text-base-content/80">
-            20% of each token&apos;s total supply is allocated to the rewards
-            pool, distributed over 365 days proportionally to stakers (24h lock
-            after staking).
+            When you hold a creator&apos;s coin, you automatically receive their streamed earnings - no claiming needed.
           </p>
           <p className="text-base text-base-content/80">
-            Stake any token launched on Streme to earn rewards in that token
-            streamed to your wallet every second.
+            Earnings flow per-second into your wallet. The more you hold and the more the creator earns, the more you make!
           </p>
         </div>
       ),
     },
     {
-      title: "Use Streme to Earn SUP",
+      title: "Track Your Creator Coin Portfolio",
       content: (
         <div className="space-y-4">
           <div className="flex justify-center mb-4">
@@ -75,12 +71,10 @@ export function MiniAppTutorialModal({
             </video>
           </div>
           <p className="text-base text-base-content/80">
-            Streme is an official Superfluid ecosystem partner and distributor
-            of $SUP tokens.
+            Use YouBuidl&apos;s portfolio tracker to monitor all creator coins you own across multiple wallets.
           </p>
           <p className="text-base text-base-content/80">
-            To earn, just buy, stake, or hodl Streme tokens, contribute to
-            crowdfunds, or launch your own token!
+            See real-time P&L, transaction history, and streaming earnings across Base, Optimism, Arbitrum, Polygon, and Ethereum.
           </p>
         </div>
       ),

@@ -1,4 +1,15 @@
-# Project Overview
+# Project: YouBuidl - Creator Streaming Platform
+
+YouBuidl is a **creator economy platform** where:
+- **Creators/Builders** launch their own coins on EVM networks (Base, Optimism, Arbitrum, Polygon, Ethereum)
+- **Stream daily earnings** in real-time to coin holders using Superfluid protocol
+- **Traders/Community members** use portfolio tracking tools to monitor creator coin investments
+
+**Key Point:** The portfolio tracker (Axiom-inspired) is a supporting tool for traders. **Streaming is the flagship feature.**
+
+---
+
+# Original Project
 
 Streme.fun is a Farcaster-integrated DeFi platform for launching and trading tokens with streaming rewards on Base L2. The platform leverages Superfluid Protocol for real-time token streaming through both Constant Flow Agreements (CFA) for individual streams and General Distribution Agreements (GDA) for group distributions.
 

@@ -26,46 +26,53 @@ export function HowItWorksModal({
           ✕
         </button>
 
-        <h2 className="text-2xl font-bold mb-6">How STREME.FUN Works</h2>
+        <h2 className="text-2xl font-bold mb-6">How YouBuidl Works</h2>
 
         <div className="space-y-6">
           <div>
             <h3 className="text-lg font-semibold mb-2 text-primary">
-              Streaming Rewards
+              🌊 Creators Launch Coins
             </h3>
             <p className="opacity-80">
-              Streme.fun is a token launcher, where every token launched
-              automatically streams rewards directly to stakers&apos; wallets -
-              no claiming needed.
+              Builders and creators launch their own tokens on EVM networks (Base, Optimism, Arbitrum, Polygon, Ethereum). 
+              No complex smart contracts needed - simple, straightforward coin creation.
             </p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-2 text-secondary">
-              Fair Distribution
+              💰 Stream Daily Earnings
             </h3>
             <p className="opacity-80">
-              20% of each token&apos;s total supply is allocated to the rewards
-              pool, distributed over 365 days proportionally to stakers.
+              Creators stream a portion of their daily earnings (in real-time, per-second) to all coin holders using Superfluid. 
+              If you hold a creator&apos;s coin, you earn automatically - no claiming needed.
             </p>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-2 text-accent">
-              Simple Staking
+              📊 Track Your Investments
             </h3>
             <p className="opacity-80">
-              Staking is simple but secure. When you stake tokens, they&apos;re
-              locked for 24 hours. After the lock period, you can unstake
-              anytime. Your rewards continue streaming whether they&apos;re
-              locked or not.
+              The portfolio tracker helps you monitor all creator coins you own across multiple wallets. 
+              See real-time P&L, transaction history, and performance analytics for each creator coin investment.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-info">
+              ✨ Multi-Chain Support
+            </h3>
+            <p className="opacity-80">
+              YouBuidl supports Base, Optimism, Arbitrum, Polygon, and Ethereum. 
+              Track creator coins and earnings across all EVM networks from one dashboard.
             </p>
           </div>
 
           {/* Add docs link */}
           <div className="text-center pt-4">
             <a
-              href="https://docs.streme.fun"
+              href="https://github.com/kowksicoder/hamiltea/blob/main/README_YOUBUIDL.md"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-primary hover:underline"

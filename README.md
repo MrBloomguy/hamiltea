@@ -1,6 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YouBuidl - Creator Economy Streaming Platform
 
-## Getting Started
+YouBuidl enables **creators to launch their own coins on EVM networks** (Base, Optimism, Arbitrum, Polygon, Ethereum) and **stream daily earnings** to their community. Built for creators, by builders. Includes portfolio tracking tools to help traders monitor their creator coin investments.
+
+## 📚 Documentation
+
+For complete platform documentation, features, API setup, and deployment instructions, see:
+
+- **[README_YOUBUIDL.md](./README_YOUBUIDL.md)** - Main platform documentation
+- **[TRACKER_GUIDE.md](./TRACKER_GUIDE.md)** - Wallet tracker user guide
+- **[TRACKER_FEATURES.md](./TRACKER_FEATURES.md)** - Technical architecture
+- **[TRACKER_UI_REDESIGN.md](./TRACKER_UI_REDESIGN.md)** - UI/UX design details
+- **[__tests__/README.md](./__tests__/README.md)** - Test suite documentation
+
+## 🚀 Quick Start
 
 First, run the development server:
 
@@ -16,21 +28,103 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🌊 Streaming (Flagship)
+- **Creator Coin Launches** - Builders launch their own coins on Base, Optimism, Arbitrum, Polygon, Ethereum
+- **Daily Earnings Streams** - Automated real-time payment streams using Superfluid protocol
+- **Community Rewards** - Coins holders earn daily revenue shares from creator activities
 
-## Learn More
+### 📊 Portfolio Tracking (Supporting Tool)
+- **Multi-Wallet Tracker** - Monitor holdings across multiple wallets and EVM chains
+- **Creator Coin Portfolio** - Track all creator coins you've invested in
+- **Real-Time P&L** - Live profit/loss calculations with weighted average entry prices
+- **Transaction History** - Complete trading history from Etherscan and Moralis APIs
+- **Performance Analytics** - Diversity scoring, risk assessment, holder classification
 
-To learn more about Next.js, take a look at the following resources:
+### 🛠️ Platform Features
+- **Multi-Chain Support** - Base, Optimism, Arbitrum, Polygon, Ethereum
+- **Smart Caching** - Optimized API calls preventing rate limiting
+- **Professional UI** - Compact, data-dense interface for serious traders
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 15.5.7** - Full-stack React framework
+- **TypeScript** - Type-safe development
+- **Viem 2.31.2** - Ethereum client
+- **Tailwind CSS** - Utility-first styling
+- **Superfluid SDK** - Real-time streaming
+- **APIs:** Moralis, Alchemy, Etherscan
 
-## Deploy on Vercel
+## 🔧 Environment Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See [README_YOUBUIDL.md](./README_YOUBUIDL.md#-api-keys--configuration) for detailed API key setup.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Required keys:
+- `NEXT_PUBLIC_MORALIS_API_KEY` - Moralis JWT token
+- `NEXT_PUBLIC_ALCHEMY_API_KEY` - Alchemy API key
+- `NEXT_PUBLIC_ETHERSCAN_API_KEY` - Etherscan API key
+
+## 📦 Project Structure
+
+```
+src/
+├── app/
+│   ├── tracker/          # Wallet tracker page
+│   └── api/              # API routes
+├── components/
+│   ├── tracker/          # Tracker-specific components
+│   └── ...
+├── lib/
+│   ├── tokenHoldings.ts      # Token fetching
+│   ├── transactionHistory.ts # Transaction API integration
+│   ├── pnlCalculator.ts      # P&L calculations
+│   ├── walletActivity.ts     # Transaction analysis
+│   └── ...
+└── hooks/
+    └── ... custom React hooks
+```
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Watch mode
+npm run test:watch
+```
+
+See [__tests__/README.md](./__tests__/README.md) for testing documentation.
+
+## 📖 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Viem Documentation](https://viem.sh)
+- [Superfluid Documentation](https://docs.superfluid.finance)
+- [Tailwind CSS](https://tailwindcss.com)
+
+## 🚀 Deployment
+
+See [README_YOUBUIDL.md](./README_YOUBUIDL.md#-deployment) for deployment options:
+- Vercel (recommended)
+- Docker container
+- Traditional Node.js server
+
+## 📝 License
+
+Built on Streme.fun architecture. See acknowledgments in [README_YOUBUIDL.md](./README_YOUBUIDL.md).
+
+## 🤝 Contributing
+
+Contributions welcome! Please review our guidelines in [README_YOUBUIDL.md](./README_YOUBUIDL.md#-contributing).
+
+---
+
+**Platform:** YouBuidl - Web3 Trading & Streaming  
+**Version:** 1.0.0  
+**Last Updated:** December 2025
+

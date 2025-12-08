@@ -48,7 +48,7 @@ export function HowCrowdfundWorksModal({
       >
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">How Streme Crowdfund Works</h2>
+          <h2 className="text-xl font-bold">How YouBuidl Streaming Works</h2>
           <button onClick={onClose} className="btn btn-ghost btn-sm btn-circle">
             <svg
               className="w-5 h-5"
@@ -70,26 +70,34 @@ export function HowCrowdfundWorksModal({
         {/* Content */}
         <div className="space-y-4">
           <div>
-            <h3 className="font-semibold text-base mb-2">🎯 The Goal</h3>
+            <h3 className="font-semibold text-base mb-2">🌊 Creator Coins</h3>
             <p className="text-sm text-base-content/70">
-              Grow Streme by funding initiatives.
+              Launch your own coin on Base, Optimism, Arbitrum, Polygon, or Ethereum. 
+              Simple setup, no complex contracts needed.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-base mb-2">💰 How It Works</h3>
+            <h3 className="font-semibold text-base mb-2">💸 Stream Earnings</h3>
             <p className="text-sm text-base-content/70">
-              Your STREME tokens generate yield when staked. Instead of keeping
-              that yield, you redirect it to fund Streme&apos;s growth
-              initiatives. You can withdraw your staked tokens anytime.
+              Stream a portion of your daily earnings directly to all coin holders in real-time. 
+              Earnings flow per-second using Superfluid - automatic, transparent, and trustless.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-base mb-2">🎁 Rewards</h3>
+            <h3 className="font-semibold text-base mb-2">💰 Community Rewards</h3>
             <p className="text-sm text-base-content/70">
-              Earn Superfluid $SUP tokens based on your contribution size. Be
-              sure to claim daily to update your flow rate.
+              Coin holders earn automatically - no claiming needed. Your share flows continuously, 
+              building loyalty and engagement with your community.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-base mb-2">📊 Track Everything</h3>
+            <p className="text-sm text-base-content/70">
+              Use YouBuidl's portfolio tracker to monitor creator coins you&apos;ve invested in. 
+              See real-time P&L, transaction history, and earnings across all EVM chains.
             </p>
           </div>
         </div>

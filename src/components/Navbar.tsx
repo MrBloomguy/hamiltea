@@ -199,6 +199,25 @@ export function Navbar() {
               </svg>
             </Link>
             <Link
+              href="/tracker"
+              aria-label="Tracker"
+              className="w-9 h-9 rounded-md bg-[#1a2335] border border-[#1f2633] hover:border-[var(--lime-primary)] flex items-center justify-center text-[#e8ecf4] hover:text-[var(--lime-primary)] transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="w-4 h-4"
+              >
+                <path d="M3 3h18v18H3z" />
+                <path d="M9 9h6v6H9z" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="12" y1="3" x2="12" y2="21" />
+              </svg>
+            </Link>
+            <Link
               href="/launch"
               aria-label="Launch"
               className="w-9 h-9 rounded-md bg-[var(--lime-primary)] text-[var(--lime-primary-content)] flex items-center justify-center shadow-sm hover:brightness-105 transition"
@@ -348,6 +367,14 @@ export function Navbar() {
               className="btn btn-primary w-full justify-start"
             >
               Launch a Token
+            </Link>
+
+            <Link
+              href="/tracker"
+              className="btn btn-primary w-full justify-start"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              📊 Tracker
             </Link>
 
             {isConnected && (
