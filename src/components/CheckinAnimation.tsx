@@ -236,8 +236,8 @@ export function CheckinAnimation() {
           {/* Streme icon on top coin */}
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ marginTop: '-5px' }}>
             <Image
-              src="/icon-transparent.png"
-              alt="Streme"
+              src="/youbuidl.svg"
+              alt="YouBuidl"
               width={16}
               height={16}
               className="opacity-90"

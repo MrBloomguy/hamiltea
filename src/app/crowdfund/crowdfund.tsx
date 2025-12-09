@@ -754,7 +754,7 @@ export default function CrowdfundPage({
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/icon-transparent.png"
+            src="/youbuidl.svg"
             alt="Loading"
             className="w-16 h-16 animate-pulse"
           />

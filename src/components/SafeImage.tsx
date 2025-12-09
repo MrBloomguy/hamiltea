@@ -16,7 +16,7 @@ interface SafeImageProps {
   sizes?: string;
 }
 
-const DEFAULT_AVATAR = "/avatars/streme.png";
+const DEFAULT_AVATAR = "/youbuidl.svg";
 
 // Validate if a string is a valid URL
 const isValidUrl = (urlString: string): boolean => {

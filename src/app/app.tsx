@@ -4,7 +4,6 @@ import { TokenGrid } from "../components/TokenGrid";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Token, TokensResponse } from "./types/token";
 import { SortOption } from "../components/TokenGrid";
-import { SearchBar } from "../components/SearchBar";
 import { SortButtons } from "../components/SortButtons";
 import { useAppFrameLogic } from "../hooks/useAppFrameLogic";
 import { useUnifiedWallet } from "../hooks/useUnifiedWallet";
@@ -24,7 +23,6 @@ function App() {
   const [tokens, setTokens] = useState<Token[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [typesenseResults, setTypesenseResults] = useState<Token[]>([]);
   const [sortBy, setSortBy] = useState<SortOption>("trending");
   const hasInitiallyFetched = useRef(false);
   // Trending carousel removed; keep a stub to avoid stale references
@@ -297,15 +295,6 @@ function App() {
     }
   }, [isMiniAppView, isSDKLoaded, isConnected, unifiedConnect]);
 
-  // Handle search results change (memoized to prevent infinite loops)
-  const handleSearchResultsChange = useCallback((results: TypesenseToken[]) => {
-    // Convert Typesense results to Token format
-    const convertedTokens = results.map((tsToken: TypesenseToken) =>
-      convertTypesenseTokenToToken(tsToken)
-    );
-    setTypesenseResults(convertedTokens);
-  }, []);
-
   // Check checkin status when miniapp first opens (only after wallet is connected)
   useEffect(() => {
     const checkCheckinStatus = async () => {
@@ -458,15 +447,6 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="flex-1 max-w-xs">
-              <SearchBar
-                value={searchQuery}
-                onChange={(value) => setSearchQuery(value)}
-                onSearchResultsChange={handleSearchResultsChange}
-              />
-            </div>
-          </div>
           <TokenGrid
             tokens={tokens}
             searchQuery=""
@@ -534,13 +514,6 @@ function App() {
                   </h3>
                 </div>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto">
-                  <div className="min-w-[240px] sm:min-w-[320px]">
-                    <SearchBar
-                      value={searchQuery}
-                      onChange={(value) => setSearchQuery(value)}
-                      onSearchResultsChange={handleSearchResultsChange}
-                    />
-                  </div>
                   <SortButtons
                     sortBy={sortBy}
                     onSortChange={setSortBy}

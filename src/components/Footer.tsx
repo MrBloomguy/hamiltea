@@ -84,8 +84,8 @@ export function Footer() {
             >
               <span className="font-bold">Streme</span>
               <Image
-                src="/icon-transparent.png"
-                alt="STREME"
+                src="/youbuidl.svg"
+                alt="Footer Logo"
                 width={20}
                 height={20}
                 className="inline-block"

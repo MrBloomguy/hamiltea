@@ -1,7 +1,7 @@
 export function Logo({ onClick }: { onClick?: () => void }) {
   return (
     <img
-      src="/icon-transparent.png"
+      src="/youbuidl.svg"
       alt="Logo"
       width={40}
       height={40}

@@ -335,8 +335,8 @@ export function WalletProfileModal({
                   <div className="flex items-center space-x-3">
                     <div className="w-4 h-4 relative">
                       <Image
-                        src="/icon-transparent.png"
-                        alt="Streme"
+                        src="/youbuidl.svg"
+                        alt="YouBuidl"
                         fill
                         className="object-contain"
                       />

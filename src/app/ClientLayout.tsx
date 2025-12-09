@@ -739,7 +739,7 @@ function EnvironmentDetector({ children }: { children: React.ReactNode }) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <img
-          src="/icon-transparent.png"
+          src="/youbuidl.svg"
           alt="Loading"
           className="w-16 h-16 animate-pulse"
         />

@@ -463,6 +463,7 @@ export function CreateForm() {
               />
             </div>
           </label>
+        </div>
       </div>
 
       {/* SECTION 2: BRANDING */}
@@ -772,26 +773,6 @@ export function CreateForm() {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Token Metadata */}
-      <div className="rounded-2xl border border-base-200 bg-base-100/70 backdrop-blur p-4 space-y-3 shadow-sm">
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-xs uppercase tracking-[0.08em] text-base-content/60">Story</p>
-            <h3 className="text-lg font-semibold">Token metadata</h3>
-          </div>
-          <span className="badge badge-ghost badge-sm">Optional</span>
-        </div>
-        <div>
-          <label className="block mb-1 text-sm font-medium">Description</label>
-          <textarea
-            placeholder="Describe your token..."
-            value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-            className="textarea textarea-bordered w-full h-24 bg-base-100 rounded-xl"
-          />
-        </div>
       </div>
 
       {/* SECTION 4: VAULT (ADVANCED) */}

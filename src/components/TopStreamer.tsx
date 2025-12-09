@@ -190,7 +190,7 @@ const TopStreamerComponent = () => {
                           <Image
                             src={
                               token.creator?.profileImage ??
-                              `/avatars/streme.png`
+                              `/youbuidl.svg`
                             }
                             alt={token.creator?.name ?? "Anon"}
                             width={16}

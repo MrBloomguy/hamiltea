@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export function TutorialStreamingAnimation() {
   const [isDark, setIsDark] = useState(false);
@@ -246,32 +245,20 @@ export function TutorialStreamingAnimation() {
         </g>
       </svg>
 
-      {/* Streme logo - upper left */}
+      {/* YouBuidl logo - upper left */}
       <div className="absolute left-1/3 top-1/2 z-10 float-element transform -translate-x-1/2 -translate-y-1/2">
-        <div className="w-8 h-8 bg-white/95 rounded-full flex items-center justify-center shadow-lg border border-white/20">
-          <Image
-            src="/icon-transparent.png"
-            alt="Streme"
-            width={24}
-            height={24}
-            className="opacity-90"
-          />
+        <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg border border-white/20 font-bold text-white text-xs">
+          YB
         </div>
       </div>
 
-      {/* Superinu mascot - lower right */}
+      {/* Creator icon - lower right */}
       <div
         className="absolute right-1/3 bottom-1/3 z-10 float-element transform translate-x-1/2 translate-y-1/2"
         style={{ animationDelay: "-3s" }}
       >
-        <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 overflow-hidden">
-          <Image
-            src="/superinu.webp"
-            alt="Superinu"
-            width={48}
-            height={48}
-            className="opacity-90"
-          />
+        <div className="w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 border-primary/30 overflow-hidden bg-primary/10">
+          <span className="text-lg">👨‍💼</span>
         </div>
       </div>
     </div>

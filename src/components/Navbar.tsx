@@ -122,7 +122,7 @@ export function Navbar() {
           <div className="flex items-center flex-none">
             <Link href="/" className="flex items-center">
               <Image
-                src="/icon-transparent.png"
+                src="/youbuidl.svg"
                 width={36}
                 height={36}
                 alt="Logo"
@@ -217,6 +217,12 @@ export function Navbar() {
               className="btn btn-primary btn-sm"
             >
               Launch
+            </Link>
+            <Link
+              href="/creators"
+              className="btn btn-ghost btn-sm text-base-content"
+            >
+              Creators
             </Link>
             <button
               onClick={() => setIsTutorialOpen(true)}

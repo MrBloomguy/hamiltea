@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 const NAV_ITEMS = [
   { label: "Home", href: "/", icon: HomeIcon },
   { label: "Tracker", href: "/tracker", icon: TrackerIcon },
-  { label: "GDA", href: "/gda", icon: FlameIcon },
-  { label: "CFA", href: "/cfa", icon: DropsIcon },
+  { label: "Launch", href: "/launch", icon: LaunchIcon },
+  { label: "Creators", href: "/creators", icon: CreatorsIcon },
   { label: "Docs", href: "https://docs.streme.fun", icon: DocsIcon, external: true },
 ];
 
@@ -136,6 +136,40 @@ function DocsIcon({ className }: { className?: string }) {
     >
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <path d="M14 2v6h6" />
+    </svg>
+  );
+}
+
+function LaunchIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+      <path d="M12 3v7" />
+    </svg>
+  );
+}
+
+function CreatorsIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
     </svg>
   );
 }
