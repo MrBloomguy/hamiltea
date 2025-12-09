@@ -408,166 +408,164 @@ export function CreateForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid lg:grid-cols-3 gap-4"
+      className="w-full max-w-2xl mx-auto space-y-5"
     >
-      <div className="lg:col-span-2 space-y-4">
-        <div className="rounded-2xl border border-base-200 bg-base-100/70 backdrop-blur p-4 shadow-sm space-y-4">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.08em] text-base-content/60">
-                Token shell
-              </p>
-              <h3 className="text-lg font-semibold">Basics & branding</h3>
+      {/* SECTION 1: BASIC INFO */}
+      <div className="rounded-2xl border border-base-200 bg-base-100/50 backdrop-blur p-5 space-y-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-lg bg-primary/10">
+            <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.5a2 2 0 00-1 3.75A2 2 0 0110 10.5H8a2 2 0 00-2 2v4a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">Basics</h3>
+            <p className="text-xs text-base-content/60">Token name and symbol</p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4">
+          <label className="form-control">
+            <div className="label px-0 py-2">
+              <span className="label-text font-medium text-sm">Token Name *</span>
             </div>
-            <div className="badge badge-primary badge-sm">Required</div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-3">
-            <label className="form-control">
-              <div className="label px-0 py-1">
-                <span className="label-text text-xs uppercase tracking-[0.08em]">
-                  Name
-                </span>
-              </div>
-              <input
-                type="text"
-                placeholder="Token name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="input input-sm input-bordered bg-base-200 w-full rounded-xl"
-                required
-              />
-            </label>
-
-            <label className="form-control">
-              <div className="label px-0 py-1">
-                <span className="label-text text-xs uppercase tracking-[0.08em]">
-                  Symbol
-                </span>
-              </div>
-              <div className="join w-full">
-                <span className="join-item px-3 flex items-center bg-base-200 text-base-content/70 rounded-l-xl text-sm">
-                  $
-                </span>
-                <input
-                  type="text"
-                  placeholder="SYM"
-                  value={formData.symbol}
-                  onChange={(e) => {
-                    const rawValue = e.target.value;
-                    const sanitizedValue = rawValue.startsWith("$")
-                      ? rawValue.substring(1)
-                      : rawValue;
-                    setFormData({ ...formData, symbol: sanitizedValue });
-                  }}
-                  className="join-item input input-sm input-bordered bg-base-100 w-full rounded-r-xl"
-                  required
-                />
-              </div>
-            </label>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-3 items-stretch">
-            <div className="form-control">
-              <div className="label px-0 py-1">
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.08em]">
-                  <span>Upload</span>
-                  <span className="badge badge-ghost badge-xs">Optional</span>
-                </div>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="hidden"
-                id="image-upload"
-              />
-              <label
-                htmlFor="image-upload"
-                className="btn btn-outline btn-sm w-full justify-center rounded-xl"
-              >
-                {isUploadingImage ? (
-                  <>
-                    <span className="loading loading-spinner loading-xs mr-2"></span>
-                    Uploading...
-                  </>
-                ) : (
-                  <>
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      />
-                    </svg>
-                    Select file
-                  </>
-                )}
-              </label>
-            </div>
-
-            <label className="form-control md:col-span-2">
-              <div className="label px-0 py-1">
-                <span className="label-text text-xs uppercase tracking-[0.08em]">
-                  Image URL
-                </span>
-              </div>
-              <input
-                type="text"
-                placeholder="https://..."
-                value={formData.imageUrl}
-                onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
-                className="input input-sm input-bordered bg-base-100 w-full rounded-xl"
-              />
-              {previewUrl && (
-                <div className="mt-2 inline-flex items-center gap-2 rounded-xl border border-base-200 bg-base-200/70 px-2 py-1">
-                  <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-base-300">
-                    <Image
-                      src={previewUrl}
-                      alt="Token preview"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <span className="text-xs opacity-70">Live preview</span>
-                </div>
-              )}
-            </label>
-          </div>
+            <input
+              type="text"
+              placeholder="e.g., MyToken"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="input input-sm input-bordered bg-base-100 w-full rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+              required
+            />
+          </label>
 
           <label className="form-control">
-            <div className="label px-0 py-1">
-              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.08em]">
-                <span>Description</span>
-                <span className="badge badge-ghost badge-xs">Optional</span>
-              </div>
+            <div className="label px-0 py-2">
+              <span className="label-text font-medium text-sm">Symbol *</span>
             </div>
-            <textarea
-              placeholder="Short description for your token..."
-              value={formData.description}
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
-              className="textarea textarea-bordered bg-base-100 rounded-xl min-h-[96px]"
-            />
+            <div className="join w-full">
+              <span className="join-item px-3 flex items-center bg-base-200 text-base-content/70 font-semibold rounded-l-lg text-sm">
+                $
+              </span>
+              <input
+                type="text"
+                placeholder="MYTOKEN"
+                value={formData.symbol}
+                onChange={(e) => {
+                  const rawValue = e.target.value;
+                  const sanitizedValue = rawValue.startsWith("$")
+                    ? rawValue.substring(1)
+                    : rawValue;
+                  setFormData({ ...formData, symbol: sanitizedValue });
+                }}
+                className="join-item input input-sm input-bordered bg-base-100 w-full rounded-r-lg focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
+                required
+              />
+            </div>
+          </label>
+      </div>
+
+      {/* SECTION 2: BRANDING */}
+      <div className="rounded-2xl border border-base-200 bg-base-100/50 backdrop-blur p-5 space-y-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-lg bg-secondary/10">
+            <svg className="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">Branding</h3>
+            <p className="text-xs text-base-content/60">Image and description</p>
+          </div>
+        </div>
+
+        <label className="form-control">
+          <div className="label px-0 py-2">
+            <span className="label-text font-medium text-sm">Image URL</span>
+          </div>
+          <input
+            type="text"
+            placeholder="https://..."
+            value={formData.imageUrl}
+            onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+            className="input input-sm input-bordered bg-base-100 w-full rounded-lg focus:ring-2 focus:ring-secondary/30 focus:border-secondary transition-all"
+          />
+          {previewUrl && (
+            <div className="mt-3 flex items-center gap-3 p-3 rounded-lg bg-base-200/50 border border-base-200">
+              <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-base-300 shrink-0">
+                <Image
+                  src={previewUrl}
+                  alt="Token preview"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-xs text-base-content/70">Image preview loaded ✓</span>
+            </div>
+          )}
+        </label>
+
+        <div className="divider my-3"></div>
+
+        <div className="flex gap-2">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="hidden"
+            id="image-upload"
+          />
+          <label
+            htmlFor="image-upload"
+            className="btn btn-outline btn-sm flex-1 rounded-lg"
+          >
+            {isUploadingImage ? (
+              <>
+                <span className="loading loading-spinner loading-xs"></span>
+                Uploading...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                Upload Image
+              </>
+            )}
           </label>
         </div>
 
-        {/* Staking Configuration */}
-      <div className="rounded-2xl border border-base-200 bg-base-100/70 backdrop-blur p-4 space-y-4 shadow-sm">
-        <h3 className="font-semibold flex items-center gap-2 text-lg">
-          Staking Configuration
-          <span className="badge badge-sm badge-primary">Required</span>
-        </h3>
+        <label className="form-control">
+          <div className="label px-0 py-2">
+            <span className="label-text font-medium text-sm">Description</span>
+          </div>
+          <textarea
+            placeholder="Describe what makes your token unique..."
+            value={formData.description}
+            onChange={(e) =>
+              setFormData({ ...formData, description: e.target.value })
+            }
+            className="textarea textarea-bordered bg-base-100 rounded-lg min-h-[80px] focus:ring-2 focus:ring-secondary/30 focus:border-secondary transition-all"
+          />
+        </label>
+      </div>
 
-        {/* Preset Templates */}
-        <div className="grid grid-cols-2 gap-2">
+      {/* SECTION 3: STAKING CONFIGURATION */}
+      <div className="rounded-2xl border border-base-200 bg-base-100/50 backdrop-blur p-5 space-y-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-lg bg-accent/10">
+            <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">Staking</h3>
+            <p className="text-xs text-base-content/60">Configure rewards for token holders</p>
+          </div>
+        </div>
+
+        {/* Quick Templates */}
+        <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
             onClick={() => {
@@ -579,54 +577,42 @@ export function CreateForm() {
                 stakingFlowDays: 365,
               });
             }}
-            className={`btn btn-sm rounded-xl h-auto py-3 justify-start ${
+            className={`p-3 rounded-lg border-2 transition-all ${
               useDefaultStaking && v2Config.stakingAllocation === 10
-                ? "btn-primary"
-                : "btn-ghost border border-base-200"
+                ? "border-accent bg-accent/10"
+                : "border-base-200 hover:border-base-300"
             }`}
           >
             <div className="text-left">
-              <div className="font-semibold">Standard</div>
-              <div className="text-[11px] opacity-70">10% • 1d lock • 365d flow</div>
+              <div className="font-semibold text-sm">Standard</div>
+              <div className="text-[11px] opacity-60 mt-1">10% • 1d • 365d</div>
             </div>
           </button>
           <button
             type="button"
             onClick={() => setUseDefaultStaking(false)}
-            className={`btn btn-sm rounded-xl h-auto py-3 justify-start ${
-              !useDefaultStaking ? "btn-primary" : "btn-ghost border border-base-200"
+            className={`p-3 rounded-lg border-2 transition-all ${
+              !useDefaultStaking
+                ? "border-accent bg-accent/10"
+                : "border-base-200 hover:border-base-300"
             }`}
           >
             <div className="text-left">
-              <div className="font-semibold">Custom</div>
-              <div className="text-[11px] opacity-70">Adjust allocation & timing</div>
+              <div className="font-semibold text-sm">Custom</div>
+              <div className="text-[11px] opacity-60 mt-1">Customize values</div>
             </div>
           </button>
         </div>
 
         {!useDefaultStaking && (
-          <>
+          <div className="space-y-4 p-4 rounded-lg bg-base-200/30 border border-base-200">
             <div>
-              <label className="block mb-1">
+              <label className="block mb-2">
                 <span className="text-sm font-medium flex items-center gap-2">
-                  Staking Allocation (%)
-                  <div
-                    className="tooltip tooltip-right"
-                    data-tip="Percentage of total token supply allocated to staking rewards. This amount will be distributed to stakers over the flow duration."
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
+                  Allocation %
+                  <div className="tooltip tooltip-right" data-tip="% of total supply for staking rewards">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 </span>
@@ -642,35 +628,18 @@ export function CreateForm() {
                     stakingAllocation: Number(e.target.value),
                   })
                 }
-                className="input input-sm input-bordered w-full bg-base-100 rounded-xl"
+                className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
               />
-              <p className="text-xs opacity-60 mt-1">
-                % of total supply allocated to staking rewards
-              </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block mb-1">
+                <label className="block mb-2">
                   <span className="text-sm font-medium flex items-center gap-2">
                     Lock Duration (days)
-                    <div
-                      className="tooltip tooltip-right"
-                      data-tip="Minimum time users must keep tokens staked before they can unstake. Set to 0 for no lock period."
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
+                    <div className="tooltip tooltip-right" data-tip="Minimum staking period before unstaking allowed">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                   </span>
@@ -685,30 +654,16 @@ export function CreateForm() {
                       stakingLockDays: Number(e.target.value),
                     })
                   }
-                className="input input-sm input-bordered w-full bg-base-100 rounded-xl"
+                  className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
                 />
               </div>
               <div>
-                <label className="block mb-1">
+                <label className="block mb-2">
                   <span className="text-sm font-medium flex items-center gap-2">
                     Flow Duration (days)
-                    <div
-                      className="tooltip tooltip-right"
-                      data-tip="Total time period over which staking rewards are distributed. The allocated tokens stream continuously to stakers during this period."
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
+                    <div className="tooltip tooltip-right" data-tip="Total distribution duration for staking rewards">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                   </span>
@@ -723,32 +678,18 @@ export function CreateForm() {
                       stakingFlowDays: Number(e.target.value),
                     })
                   }
-                className="input input-sm input-bordered w-full bg-base-100 rounded-xl"
+                  className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block mb-1">
+              <label className="block mb-2">
                 <span className="text-sm font-medium flex items-center gap-2">
                   Delegate Address (optional)
-                  <div
-                    className="tooltip tooltip-right"
-                    data-tip="Alternative address to receive and manage staking rewards. Leave empty to use the default staking contract address."
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
+                  <div className="tooltip tooltip-right" data-tip="Alternative address for staking rewards">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                 </span>
@@ -763,22 +704,15 @@ export function CreateForm() {
                     stakingDelegate: e.target.value,
                   })
                 }
-                  className="input input-sm input-bordered w-full bg-base-100 rounded-xl"
+                className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
               />
-              <p className="text-xs opacity-60 mt-1">
-                Address to receive staking rewards (leave empty for default)
-              </p>
             </div>
 
             {/* Smart Validation Warnings */}
-            <div className="space-y-2">
+            <div className="space-y-2 mt-4">
               {v2Config.stakingLockDays > 30 && (
-                <div className="alert alert-warning py-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    className="stroke-current shrink-0 w-5 h-5"
+                <div className="alert alert-warning py-2 px-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-4 h-4"
                   >
                     <path
                       strokeLinecap="round"
@@ -836,7 +770,7 @@ export function CreateForm() {
                 </div>
               )}
             </div>
-          </>
+          </div>
         )}
       </div>
 
@@ -860,579 +794,335 @@ export function CreateForm() {
         </div>
       </div>
 
-      {/* Vault Configuration (Advanced) */}
-      <div className="collapse collapse-arrow bg-base-200">
-        <input type="checkbox" />
-        <div className="collapse-title text-sm font-medium flex items-center justify-between">
-          <span>Vault (Advanced)</span>
-          <span className="badge badge-sm badge-ghost">Optional</span>
+      {/* SECTION 4: VAULT (ADVANCED) */}
+      <div className="rounded-2xl border border-base-200 bg-base-100/50 backdrop-blur p-5 space-y-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-lg bg-warning/10">
+            <svg className="w-5 h-5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">Vaults</h3>
+            <p className="text-xs text-base-content/60">Lock tokens for beneficiaries (optional)</p>
+          </div>
         </div>
-        <div className="collapse-content">
-          <div className="space-y-4 pt-4">
-            {/* Vault Mode Selection */}
-            <div className="flex gap-2">
-              <button
-                type="button"
-                className={`btn btn-sm flex-1 h-auto py-3 ${
-                  vaultMode === "off" ? "btn-primary" : "btn-ghost"
-                }`}
-                onClick={() => {
-                  setVaultMode("off");
-                  setVaults([createEmptyVault()]);
-                }}
-              >
-                Off
-              </button>
-              <button
-                type="button"
-                className={`btn btn-sm flex-1 h-auto py-3 ${
-                  vaultMode === "default" ? "btn-primary" : "btn-ghost"
-                }`}
-                onClick={() => {
-                  setVaultMode("default");
-                  setVaults([{
-                    allocation: 10,
-                    beneficiary: "",
-                    lockDays: 30,
-                    vestingDays: 365,
-                  }]);
-                }}
-              >
-                <div className="flex flex-col items-center">
-                  <span className="font-semibold">Default</span>
-                  <span className="text-xs opacity-70">
-                    10% / 30d lock / 365d vest
-                  </span>
-                </div>
-              </button>
-              <button
-                type="button"
-                className={`btn btn-sm flex-1 h-auto py-3 ${
-                  vaultMode === "custom" ? "btn-primary" : "btn-ghost"
-                }`}
-                onClick={() => {
-                  setVaultMode("custom");
-                  setVaults((prev) =>
-                    prev.map((vault) => ({
-                      ...vault,
-                      lockDays:
-                        vault.lockDays < MIN_VAULT_LOCK_DAYS
-                          ? MIN_VAULT_LOCK_DAYS
-                          : vault.lockDays,
-                    }))
-                  );
-                }}
-              >
-                Custom
-              </button>
-            </div>
 
-            {/* Vault Fields (only show when not "off") */}
-            {vaultMode !== "off" && (
-              <div className="space-y-4">
-                {vaults.map((vault, index) => {
-                  const otherAllocation = vaults.reduce((sum, currentVault, currentIndex) => {
-                    if (currentIndex === index) return sum;
-                    const value = Number.isFinite(currentVault.allocation)
-                      ? currentVault.allocation
-                      : 0;
-                    return sum + value;
-                  }, 0);
-                  const allocationValue = Number.isFinite(vault.allocation)
-                    ? vault.allocation
-                    : 0;
-                  const remainingForVault =
-                    100 - v2Config.stakingAllocation - otherAllocation;
-                  const allowedMax = Math.max(
-                    Math.round(allocationValue),
-                    Math.floor(Math.max(0, remainingForVault))
-                  );
+        {/* Vault Mode Selection */}
+        <div className="grid grid-cols-3 gap-2">
+          <button
+            type="button"
+            className={`p-3 rounded-lg border-2 transition-all text-center ${
+              vaultMode === "off"
+                ? "border-warning bg-warning/10"
+                : "border-base-200 hover:border-base-300"
+            }`}
+            onClick={() => {
+              setVaultMode("off");
+              setVaults([createEmptyVault()]);
+            }}
+          >
+            <div className="font-semibold text-sm">Off</div>
+          </button>
+          <button
+            type="button"
+            className={`p-3 rounded-lg border-2 transition-all text-center ${
+              vaultMode === "default"
+                ? "border-warning bg-warning/10"
+                : "border-base-200 hover:border-base-300"
+            }`}
+            onClick={() => {
+              setVaultMode("default");
+              setVaults([{
+                allocation: 10,
+                beneficiary: "",
+                lockDays: 30,
+                vestingDays: 365,
+              }]);
+            }}
+          >
+            <div className="font-semibold text-sm">Default</div>
+            <div className="text-[10px] opacity-60 mt-1">10% • 30d • 365d</div>
+          </button>
+          <button
+            type="button"
+            className={`p-3 rounded-lg border-2 transition-all text-center ${
+              vaultMode === "custom"
+                ? "border-warning bg-warning/10"
+                : "border-base-200 hover:border-base-300"
+            }`}
+            onClick={() => {
+              setVaultMode("custom");
+              setVaults((prev) =>
+                prev.map((vault) => ({
+                  ...vault,
+                  lockDays:
+                    vault.lockDays < MIN_VAULT_LOCK_DAYS
+                      ? MIN_VAULT_LOCK_DAYS
+                      : vault.lockDays,
+                }))
+              );
+            }}
+          >
+            <div className="font-semibold text-sm">Custom</div>
+            <div className="text-[10px] opacity-60 mt-1">Customize</div>
+          </button>
+        </div>
 
-                  return (
-                    <div
-                      key={`vault-${index}`}
-                      className="rounded-lg border border-base-300 bg-base-100 p-4 space-y-4"
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-semibold text-sm">
-                          Vault {index + 1}
-                        </span>
-                        {vaultMode === "custom" && (
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs opacity-60">
-                              Remaining:{" "}
-                              {Math.max(
-                                0,
-                                100 - v2Config.stakingAllocation - (totalVaultAllocation - allocationValue)
-                              ).toFixed(2)}
-                              %
-                            </span>
-                            {vaults.length > 1 && (
-                              <button
-                                type="button"
-                                className="btn btn-xs btn-ghost text-error"
-                                onClick={() => removeVault(index)}
-                              >
-                                Remove
-                              </button>
-                            )}
-                          </div>
-                        )}
+        {/* Vault Fields (only show when not "off") */}
+        {vaultMode !== "off" && (
+          <div className="space-y-4 p-4 rounded-lg bg-base-200/30 border border-base-200">
+            {vaults.map((vault, index) => {
+              const otherAllocation = vaults.reduce((sum, currentVault, currentIndex) => {
+                if (currentIndex === index) return sum;
+                const value = Number.isFinite(currentVault.allocation)
+                  ? currentVault.allocation
+                  : 0;
+                return sum + value;
+              }, 0);
+              const allocationValue = Number.isFinite(vault.allocation)
+                ? vault.allocation
+                : 0;
+              const remainingForVault =
+                100 - v2Config.stakingAllocation - otherAllocation;
+              const allowedMax = Math.max(
+                Math.round(allocationValue),
+                Math.floor(Math.max(0, remainingForVault))
+              );
+
+              return (
+                <div
+                  key={`vault-${index}`}
+                  className="rounded-lg border border-base-300 bg-base-100 p-4 space-y-3"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-sm">Vault {index + 1}</span>
+                    {vaultMode === "custom" && vaults.length > 1 && (
+                      <button
+                        type="button"
+                        className="btn btn-xs btn-ghost text-error"
+                        onClick={() => removeVault(index)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+
+                  <div className="space-y-3">
+                    <div>
+                      <label className="block mb-2">
+                        <span className="text-sm font-medium">Allocation %</span>
+                      </label>
+                      <input
+                        type="number"
+                        min="0"
+                        max={allowedMax}
+                        value={allocationValue}
+                        onChange={(e) => {
+                          const parsed = Number(e.target.value);
+                          const nextValue = Number.isNaN(parsed)
+                            ? 0
+                            : Math.min(Math.max(0, Math.round(parsed)), allowedMax);
+                          handleVaultChange(index, { allocation: nextValue });
+                        }}
+                        className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-warning/30 focus:border-warning transition-all"
+                        disabled={vaultMode === "default"}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block mb-2">
+                        <span className="text-sm font-medium">Beneficiary Address</span>
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="0x..."
+                        value={vault.beneficiary}
+                        onChange={(e) =>
+                          handleVaultChange(index, { beneficiary: e.target.value })
+                        }
+                        className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-warning/30 focus:border-warning transition-all"
+                      />
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block mb-2">
+                          <span className="text-sm font-medium">Lock Duration (days)</span>
+                        </label>
+                        <input
+                          type="number"
+                          min={MIN_VAULT_LOCK_DAYS}
+                          value={vault.lockDays}
+                          onChange={(e) => {
+                            const parsed = Number(e.target.value);
+                            const nextValue = Number.isNaN(parsed)
+                              ? MIN_VAULT_LOCK_DAYS
+                              : Math.max(MIN_VAULT_LOCK_DAYS, Math.round(parsed));
+                            handleVaultChange(index, { lockDays: nextValue });
+                          }}
+                          className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-warning/30 focus:border-warning transition-all"
+                          disabled={vaultMode === "default"}
+                        />
                       </div>
-
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                <label className="block mb-1">
-                            <span className="text-sm font-medium flex items-center gap-2">
-                              Allocation (%)
-                              <div
-                                className="tooltip tooltip-right"
-                                data-tip="Percentage of total token supply allocated to this vault."
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
-                              </div>
-                            </span>
-                          </label>
-                          <input
-                            type="number"
-                            min="0"
-                            step="1"
-                            max={allowedMax}
-                            value={Math.round(allocationValue)}
-                            onChange={(e) => {
-                              const parsed = Number(e.target.value);
-                              const normalized = Number.isNaN(parsed)
-                                ? 0
-                                : Math.round(parsed);
-                              const clamped = Math.min(
-                                Math.max(0, normalized),
-                                allowedMax
-                              );
-                              handleVaultChange(index, { allocation: clamped });
-                            }}
-                  className="input input-sm input-bordered w-full bg-base-100 rounded-xl"
-                            disabled={vaultMode === "default"}
-                          />
-                        </div>
-                        <div>
-                          <label className="block mb-2">
-                            <span className="text-sm font-medium flex items-center gap-2">
-                              Beneficiary Address
-                              {allocationValue > 0 && <span className="text-error">*</span>}
-                              <div
-                                className="tooltip tooltip-right"
-                                data-tip="Wallet address that will receive the vested tokens for this vault."
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
-                              </div>
-                            </span>
-                          </label>
-                          <input
-                            type="text"
-                            placeholder="0x..."
-                            value={vault.beneficiary}
-                            onChange={(e) =>
-                              handleVaultChange(index, {
-                                beneficiary: e.target.value,
-                              })
-                            }
-                            className="input input-bordered w-full bg-base-100 rounded-full"
-                            required={allocationValue > 0}
-                            disabled={vaultMode === "default"}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block mb-2">
-                            <span className="text-sm font-medium flex items-center gap-2">
-                              Lock Duration (days)
-                              <div
-                                className="tooltip tooltip-right"
-                                data-tip="Initial lock period before vesting begins. No tokens can be claimed during this time."
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
-                              </div>
-                            </span>
-                          </label>
-                          <input
-                            type="number"
-                            min={MIN_VAULT_LOCK_DAYS}
-                            value={vault.lockDays}
-                            onChange={(e) => {
-                              const parsed = Number(e.target.value);
-                              const nextValue = Number.isNaN(parsed)
-                                ? MIN_VAULT_LOCK_DAYS
-                                : Math.max(MIN_VAULT_LOCK_DAYS, Math.round(parsed));
-                              handleVaultChange(index, { lockDays: nextValue });
-                            }}
-                            className="input input-bordered w-full bg-base-100 rounded-full"
-                            disabled={vaultMode === "default"}
-                          />
-                          <p className="text-xs opacity-60 mt-1">
-                            Minimum lock duration: {MIN_VAULT_LOCK_DAYS} days.
-                          </p>
-                        </div>
-                        <div>
-                          <label className="block mb-2">
-                            <span className="text-sm font-medium flex items-center gap-2">
-                              Vesting Duration (days)
-                              <div
-                                className="tooltip tooltip-right"
-                                data-tip="Time period over which tokens gradually become available after the lock period ends."
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-4 w-4 opacity-60 hover:opacity-100 cursor-help"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                  />
-                                </svg>
-                              </div>
-                            </span>
-                          </label>
-                          <input
-                            type="number"
-                            min="0"
-                            value={vault.vestingDays}
-                            onChange={(e) => {
-                              const parsed = Number(e.target.value);
-                              const nextValue = Number.isNaN(parsed)
-                                ? 0
-                                : Math.max(0, Math.round(parsed));
-                              handleVaultChange(index, { vestingDays: nextValue });
-                            }}
-                            className="input input-bordered w-full bg-base-100 rounded-full"
-                            disabled={vaultMode === "default"}
-                          />
-                        </div>
+                      <div>
+                        <label className="block mb-2">
+                          <span className="text-sm font-medium">Vesting Duration (days)</span>
+                        </label>
+                        <input
+                          type="number"
+                          min="0"
+                          value={vault.vestingDays}
+                          onChange={(e) => {
+                            const parsed = Number(e.target.value);
+                            const nextValue = Number.isNaN(parsed)
+                              ? 0
+                              : Math.max(0, Math.round(parsed));
+                            handleVaultChange(index, { vestingDays: nextValue });
+                          }}
+                          className="input input-sm input-bordered w-full bg-base-100 rounded-lg focus:ring-2 focus:ring-warning/30 focus:border-warning transition-all"
+                          disabled={vaultMode === "default"}
+                        />
                       </div>
                     </div>
-                  );
-                })}
-
-                {vaultMode === "custom" && (
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-ghost border border-dashed border-base-300 text-primary"
-                    onClick={addVault}
-                    disabled={remainingVaultAllocation <= 0}
-                  >
-                    + Add Vault
-                  </button>
-                )}
-
-                <div className="text-xs opacity-60">
-                  Remaining allocation available:{" "}
-                  {remainingVaultAllocation.toFixed(2)}
-                  %
-                </div>
-
-                {/* Vault Warning */}
-                {totalVaultAllocation > 20 && (
-                  <div className="alert alert-warning py-2 mt-2">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="stroke-current shrink-0 w-5 h-5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                      />
-                    </svg>
-                    <span className="text-xs">
-                      High vault allocation ({totalVaultAllocation}%) reduces
-                      available liquidity
-                    </span>
                   </div>
-                )}
+                </div>
+              );
+            })}
+
+            {vaultMode === "custom" && (
+              <button
+                type="button"
+                className="btn btn-sm btn-ghost border-2 border-dashed border-base-300 text-primary w-full rounded-lg"
+                onClick={addVault}
+                disabled={remainingVaultAllocation <= 0}
+              >
+                + Add Vault
+              </button>
+            )}
+
+            {remainingVaultAllocation > 0 && (
+              <div className="text-xs text-base-content/60 p-2 rounded bg-base-200/30">
+                Remaining allocation: <span className="font-semibold">{remainingVaultAllocation.toFixed(2)}%</span>
+              </div>
+            )}
+
+            {totalVaultAllocation > 20 && (
+              <div className="alert alert-warning py-2 px-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span className="text-xs">High vault allocation reduces liquidity</span>
               </div>
             )}
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Allocation Summary */}
-      <div className="card bg-base-300 p-4 space-y-4">
-        <h4 className="text-sm font-semibold">Token Allocation Breakdown</h4>
-
-        {/* Visual Bar Chart */}
-        <div className="w-full h-8 flex rounded-lg overflow-hidden">
-          <div
-            className="bg-primary flex items-center justify-center text-xs font-semibold text-white transition-all duration-300"
-            style={{ width: `${v2Config.stakingAllocation}%` }}
-            title={`Staking: ${v2Config.stakingAllocation}%`}
-          >
-            {v2Config.stakingAllocation > 5 && `${v2Config.stakingAllocation}%`}
-          </div>
-          {totalVaultAllocation > 0 && (
-            <div
-              className="bg-secondary flex items-center justify-center text-xs font-semibold text-white transition-all duration-300"
-              style={{ width: `${totalVaultAllocation}%` }}
-              title={`Vault: ${totalVaultAllocation}%`}
-            >
-              {totalVaultAllocation > 5 && `${totalVaultAllocation}%`}
-            </div>
-          )}
-          <div
-            className="bg-accent flex items-center justify-center text-xs font-semibold text-white transition-all duration-300"
-            style={{ width: `${lpAllocation}%` }}
-            title={`LP: ${lpAllocation}%`}
-          >
-            {lpAllocation > 5 && `${lpAllocation}%`}
-          </div>
-        </div>
-
-        {/* Legend */}
-        <div className="space-y-1 text-sm">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-primary rounded"></div>
-              <span>Staking Rewards</span>
-            </div>
-            <span className="font-mono font-semibold">
-              {v2Config.stakingAllocation}%
-            </span>
-          </div>
-          {totalVaultAllocation > 0 && (
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-secondary rounded"></div>
-                <span>Vault (Locked)</span>
-              </div>
-              <span className="font-mono font-semibold">
-                {totalVaultAllocation}%
-              </span>
-            </div>
-          )}
-          <div className="flex justify-between items-center pt-1 border-t border-base-content/10">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-accent rounded"></div>
-              <span>Liquidity Pool</span>
-            </div>
-            <span className="font-mono font-semibold">{lpAllocation}%</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Final Summary Before Launch */}
-      {formData.name && formData.symbol && (
-        <div className="card bg-base-100 border-2 border-primary/20 p-4 space-y-3">
-          <h4 className="font-semibold flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-primary"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
+      {/* SECTION 5: SUMMARY & DEPLOYMENT */}
+      <div className="rounded-2xl border border-base-200 bg-gradient-to-br from-base-100/50 to-primary/5 backdrop-blur p-5 space-y-4">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-2 rounded-lg bg-info/10">
+            <svg className="w-5 h-5 text-info" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            Ready to Launch
-          </h4>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold">Summary</h3>
+            <p className="text-xs text-base-content/60">Review your token configuration</p>
+          </div>
+        </div>
 
-          <div className="space-y-3">
-            {/* Name & Symbol */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-base-200 p-3 rounded-lg">
-                <div className="opacity-60 text-xs mb-1">Token Name</div>
-                <div className="font-semibold truncate">{formData.name}</div>
+        <div className="grid md:grid-cols-2 gap-3">
+          {/* Token Info */}
+          <div className="space-y-2">
+            <div className="text-xs font-semibold uppercase text-base-content/50 tracking-wide">Token Info</div>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Name</span>
+                <span className="font-semibold">{formData.name || "—"}</span>
               </div>
-              <div className="bg-base-200 p-3 rounded-lg">
-                <div className="opacity-60 text-xs mb-1">Symbol</div>
-                <div className="font-semibold font-mono">
-                  ${formData.symbol}
-                </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Symbol</span>
+                <span className="font-semibold">${formData.symbol || "—"}</span>
               </div>
-            </div>
-
-            {/* Image */}
-            <div className="flex items-center gap-3 bg-base-200 p-3 rounded-lg">
-              {formData.imageUrl ? (
-                <>
-                  <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-base-300 shrink-0">
-                    <Image
-                      src={formData.imageUrl}
-                      alt="Token preview"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="text-xs opacity-60">Image uploaded ✓</div>
-                </>
-              ) : (
-                <>
-                  <div className="w-12 h-12 rounded-lg bg-base-300 shrink-0 flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 opacity-40"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div className="text-xs opacity-40 italic">
-                    No image (optional)
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Description */}
-            <div className="bg-base-200 p-3 rounded-lg">
-              <div className="opacity-60 text-xs mb-1">Description</div>
-              {formData.description ? (
-                <div className="text-sm line-clamp-2">
-                  {formData.description}
-                </div>
-              ) : (
-                <div className="text-xs opacity-40 italic">
-                  No description (optional)
-                </div>
-              )}
-            </div>
-
-            {/* Supply */}
-            <div className="bg-base-200 p-3 rounded-lg">
-              <div className="opacity-60 text-xs mb-1">Supply</div>
-              <div className="font-semibold font-mono">100B</div>
-            </div>
-
-            {/* Staking Pool */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-base-200 p-3 rounded-lg">
-                <div className="opacity-60 text-xs mb-1">Staking Pool</div>
-                <div className="font-semibold">
-                  {v2Config.stakingAllocation}% over {v2Config.stakingFlowDays}{" "}
-                  days
-                </div>
-              </div>
-              <div className="bg-base-200 p-3 rounded-lg">
-                <div className="opacity-60 text-xs mb-1">Lock Period</div>
-                <div className="font-semibold">
-                  {v2Config.stakingLockDays}{" "}
-                  {v2Config.stakingLockDays === 1 ? "day" : "days"}
-                </div>
-              </div>
-            </div>
-
-            {/* Vault */}
-            <div className="bg-base-200 p-3 rounded-lg">
-              <div className="opacity-60 text-xs mb-1">Vault Configuration</div>
-              {totalVaultAllocation > 0 ? (
-                <div className="space-y-2 text-sm">
-                  <div className="font-semibold">
-                    Total locked: {totalVaultAllocation}% of supply
-                  </div>
-                  {vaultsWithAllocation.length > 0 ? (
-                    vaultsWithAllocation.map((vault, index) => (
-                      <div key={`summary-vault-${index}`} className="space-y-0.5">
-                        <div>
-                          Vault {index + 1}: {vault.allocation}% locked for{" "}
-                          {vault.lockDays} {vault.lockDays === 1 ? "day" : "days"}, vesting{" "}
-                          {vault.vestingDays} {vault.vestingDays === 1 ? "day" : "days"}
-                        </div>
-                        <div className="text-xs opacity-60">
-                          Beneficiary: {vault.beneficiary || "Not set"}
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="text-xs opacity-60">
-                      Vault allocations configured but beneficiaries are still pending.
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="text-xs opacity-40 italic">
-                  No vault (optional)
-                </div>
-              )}
-            </div>
-
-            {/* Liquidity Pool */}
-            <div className="bg-base-200 p-3 rounded-lg">
-              <div className="opacity-60 text-xs mb-1">Liquidity Pool</div>
-              <div className="font-semibold">
-                {lpAllocation}% paired with WETH
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Supply</span>
+                <span className="font-semibold">100B</span>
               </div>
             </div>
           </div>
-        </div>
-      )}
 
-      {/* Launch Button */}
-      <button
-        type="submit"
-        className="btn btn-primary w-full"
-        disabled={(isMiniAppView && !isConnected) || isDeploying}
-      >
-        {buttonText}
-      </button>
-    </div>
-  </form>
-);
+          {/* Staking Config */}
+          <div className="space-y-2">
+            <div className="text-xs font-semibold uppercase text-base-content/50 tracking-wide">Staking</div>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Allocation</span>
+                <span className="font-semibold">{v2Config.stakingAllocation}%</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Lock Period</span>
+                <span className="font-semibold">{v2Config.stakingLockDays}d</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-base-content/70">Flow Duration</span>
+                <span className="font-semibold">{v2Config.stakingFlowDays}d</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Vault Summary */}
+          {vaultMode !== "off" && (
+            <div className="space-y-2 md:col-span-2">
+              <div className="text-xs font-semibold uppercase text-base-content/50 tracking-wide">Vaults</div>
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-sm">
+                  <span className="text-base-content/70">Total Locked</span>
+                  <span className="font-semibold">{totalVaultAllocation}%</span>
+                </div>
+                {vaultsWithAllocation.length > 0 && (
+                  <div className="text-xs opacity-70">
+                    {vaultsWithAllocation.length} vault{vaultsWithAllocation.length !== 1 ? 's' : ''} configured
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Liquidity Pool */}
+          <div className="space-y-2 md:col-span-2">
+            <div className="text-xs font-semibold uppercase text-base-content/50 tracking-wide">Liquidity Pool</div>
+            <div className="flex justify-between text-sm">
+              <span className="text-base-content/70">WETH Pair</span>
+              <span className="font-semibold">{lpAllocation}%</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="divider my-3"></div>
+
+        {/* Deploy Button */}
+        <button
+          type="submit"
+          className="btn btn-primary btn-lg w-full rounded-lg font-semibold"
+          disabled={(isMiniAppView && !isConnected) || isDeploying}
+        >
+          {isDeploying ? (
+            <>
+              <span className="loading loading-spinner loading-sm"></span>
+              Deploying...
+            </>
+          ) : (
+            <>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              {buttonText}
+            </>
+          )}
+        </button>
+      </div>
+    </form>
+  );
 }

@@ -184,8 +184,8 @@ export function StakeModal({
   };
 
   const handleShare = async () => {
-    const shareUrl = `https://streme.fun/token/${tokenAddress}`;
-    const shareText = `I just staked $${symbol} on Streme for rewards streamed to my wallet every second. Stake it to make it!
+    const shareUrl = `https://youbuidl.com/token/${tokenAddress}`;
+    const shareText = `I just staked $${symbol} on YouBuidl and earning rewards every second! 🌊 Turn your community into revenue. Stake it to make it!
 
 ${shareUrl}`;
 

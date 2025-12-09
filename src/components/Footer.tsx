@@ -28,14 +28,14 @@ export function Footer() {
         <div className="flex flex-col items-center justify-center gap-4">
           <div className="flex flex-row flex-nowrap items-center justify-center gap-4">
             <ExternalLink
-              href="https://docs.streme.fun"
+              href="https://docs.youbuidl.fun"
               className="text-sm opacity-60 hover:opacity-100 transition-opacity"
             >
               Docs
             </ExternalLink>
             {/* Farcaster link */}
             <ExternalLink
-              href="https://farcaster.xyz/streme"
+              href="https://farcaster.xyz/youbuidl"
               className="opacity-60 hover:opacity-100 transition-opacity"
             >
               <svg

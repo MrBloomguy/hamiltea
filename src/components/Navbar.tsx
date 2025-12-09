@@ -8,13 +8,18 @@ import { MiniAppTutorialModal } from "./MiniAppTutorialModal";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { HowItWorksModal } from "./HowItWorksModal";
 import { useWallet } from "../hooks/useWallet";
+import { useStremeStakingContract } from "../hooks/useStremeStakingContract";
 import { SearchBar } from "./SearchBar";
+import { formatUnits } from "viem";
 
 export function Navbar() {
   // Use new simplified wallet hook
   const { isConnected, address, connect, disconnect, isMiniApp, isLoading } =
     useWallet();
   const router = useRouter();
+  
+  // Get rewards data from contract
+  const { rewardsBalance } = useStremeStakingContract();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAddressDropdownOpen, setIsAddressDropdownOpen] = useState(false);
@@ -22,11 +27,26 @@ export function Navbar() {
   const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [formattedRewards, setFormattedRewards] = useState("0");
 
   const truncateAddress = (address: string) => {
     if (!address) return "";
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
+
+  // Format rewards when data changes
+  useEffect(() => {
+    if (rewardsBalance) {
+      try {
+        const formatted = formatUnits(rewardsBalance, 18);
+        const number = parseFloat(formatted);
+        setFormattedRewards(number.toLocaleString('en-US', { maximumFractionDigits: 0 }));
+      } catch (error) {
+        console.error("Error formatting rewards:", error);
+        setFormattedRewards("0");
+      }
+    }
+  }, [rewardsBalance]);
 
   // Easter egg function for logo clicking (desktop only - mini-app handling moved to app.tsx)
   const handleLogoClick = () => {
@@ -97,7 +117,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0f1624]/95 backdrop-blur border-b border-[#1f2633]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-base-100 backdrop-blur border-b border-base-300">
         <div className="px-3 sm:px-6 lg:px-12 h-14 flex items-center gap-3">
           <div className="flex items-center flex-none">
             <Link href="/" className="flex items-center">
@@ -124,9 +144,9 @@ export function Navbar() {
             </div>
             <div className="flex flex-col text-right leading-tight">
               <span className="text-xs font-semibold text-[var(--lime-primary)]">
-                1,242,013,630,860
+                {formattedRewards}
               </span>
-              <span className="text-[10px] uppercase tracking-wide text-[#9aa6bf]">
+              <span className="text-[10px] uppercase tracking-wide text-base-content/60">
                 rewards earned
               </span>
             </div>
@@ -179,96 +199,30 @@ export function Navbar() {
             </button>
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-1">
             <Link
               href="/tokens"
-              aria-label="Tokens"
-              className="w-9 h-9 rounded-md bg-[#1a2335] border border-[#1f2633] hover:border-[var(--lime-primary)] flex items-center justify-center text-[#e8ecf4] hover:text-[var(--lime-primary)] transition"
+              className="btn btn-ghost btn-sm text-base-content"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="w-4 h-4"
-              >
-                <rect x="4" y="5" width="16" height="3" rx="1" />
-                <rect x="4" y="10.5" width="16" height="3" rx="1" />
-                <rect x="4" y="16" width="16" height="3" rx="1" />
-              </svg>
+              Tokens
             </Link>
             <Link
               href="/tracker"
-              aria-label="Tracker"
-              className="w-9 h-9 rounded-md bg-[#1a2335] border border-[#1f2633] hover:border-[var(--lime-primary)] flex items-center justify-center text-[#e8ecf4] hover:text-[var(--lime-primary)] transition"
+              className="btn btn-ghost btn-sm text-base-content"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="w-4 h-4"
-              >
-                <path d="M3 3h18v18H3z" />
-                <path d="M9 9h6v6H9z" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="12" y1="3" x2="12" y2="21" />
-              </svg>
+              Tracker
             </Link>
             <Link
               href="/launch"
-              aria-label="Launch"
-              className="w-9 h-9 rounded-md bg-[var(--lime-primary)] text-[var(--lime-primary-content)] flex items-center justify-center shadow-sm hover:brightness-105 transition"
+              className="btn btn-primary btn-sm"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="w-4 h-4"
-              >
-                <path d="M5 19l4-1 9-9a2.828 2.828 0 10-4-4l-9 9-1 4z" />
-                <path d="M14.5 5.5l4 4" />
-              </svg>
+              Launch
             </Link>
             <button
-              aria-label="Deposit"
-              className="w-9 h-9 rounded-md bg-[#1a2335] border border-[#1f2633] text-[#e8ecf4] hover:border-[var(--lime-primary)] hover:text-[var(--lime-primary)] flex items-center justify-center transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="w-4 h-4"
-              >
-                <path d="M4 7h16M4 11h16M4 15h10" />
-                <path d="M17 19l3-3-3-3" />
-              </svg>
-            </button>
-            <button
               onClick={() => setIsTutorialOpen(true)}
-              aria-label="Tutorial"
-              className="w-9 h-9 rounded-md bg-[#1a2335] border border-[#1f2633] text-[#e8ecf4] hover:border-[var(--lime-primary)] hover:text-[var(--lime-primary)] flex items-center justify-center transition"
+              className="btn btn-ghost btn-sm text-base-content"
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+              ?
             </button>
 
             <ThemeSwitcher />
@@ -355,10 +309,10 @@ export function Navbar() {
               showSuggestions
             />
             <div className="flex items-center justify-between px-2">
-              <div className="text-sm font-semibold">
-                1,242,013,630,860
+              <div className="text-sm font-semibold text-base-content">
+                {formattedRewards}
               </div>
-              <div className="text-[11px] uppercase tracking-wide opacity-70 text-right">
+              <div className="text-[11px] uppercase tracking-wide text-base-content/60 text-right">
                 rewards earned
               </div>
             </div>

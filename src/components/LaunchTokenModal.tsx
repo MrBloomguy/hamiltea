@@ -9,12 +9,12 @@ export function LaunchTokenModal({
 }) {
   if (!isOpen) return null;
 
-  const launchText = `@streme Hey! Could you launch a token for me?
+  const launchText = `Just launched my creator coin on @youbuidl! 🚀
 
 Name: [your token name]
 Symbol: $[your ticker]
 
-[Don't forget to attach an image!] 🎨`;
+[Check out the token page!] 🎨`;
 
   const farcasterUrl = `https://farcaster.xyz/~/compose?text=${encodeURIComponent(
     launchText

@@ -212,29 +212,29 @@ CheckinSuccessModalProps) {
   }, [isOpen]);
 
   const handleShare = async () => {
-    // Array of Streme-ified quotes with context
-    const stremeQuotes = [
-      'I\'m truly "Living the Streme!" 🌊',
-      'As the song goes, "Sweet Stremes are made of this" 🎵',
-      'Great grandma always said to "Follow your Stremes" 🛤️',
-      'Time to "Streme big!" 💭',
-      'As Walt said, "All our Stremes can come true" 🌟',
-      'Today I "Dare to Streme!" 🎯',
-      'They call us "The Streme Team" 🤝',
-      'Welcome to my "Field of Stremes" 🌾',
-      '"Streme a little Streme of me" as they say 🎶',
-      'This is beyond my "wildest Stremes" 💫',
-      'I call this the "Streme come true" moment ✨',
+    // Array of YouBuidl quotes with creator economy focus
+    const youbuildlQuotes = [
+      'The future of Public Goods, one token at a time 🚀',
+      'Creator coins go brrrrr 💰',
+      'My community, my rules, my rewards 👑',
+      'Earn daily money like I stream content 🌊',
+      'Turning supporters into stakeholders 📈',
+      'Daily Revenue sharing hits different 🎯',
+      'We\'re building the creator economy 🛠️',
+      'Daily earnings, streamed to my wallet 🪪',
+      'Community ownership unlocked 🔓',
+      'From creator to capitalist 💎',
+      'This is peak creator movement ✨',
     ];
 
     // Pick a random quote
     const randomQuote =
-      stremeQuotes[Math.floor(Math.random() * stremeQuotes.length)];
+      youbuildlQuotes[Math.floor(Math.random() * youbuildlQuotes.length)];
 
-    const shareUrl = "https://streme.fun";
+    const shareUrl = "https://youbuidl.com";
     const castText = `${randomQuote}
 
-Just claimed my daily drop of 1000 staked $STREME just for opening the app!
+Just claimed my daily check-in rewards on YouBuidl 🎉
 
 ${shareUrl}`;
 
