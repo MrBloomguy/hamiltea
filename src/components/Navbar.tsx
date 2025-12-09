@@ -122,7 +122,7 @@ export function Navbar() {
           <div className="flex items-center flex-none">
             <Link href="/" className="flex items-center">
               <Image
-                src="/youbuidl.svg"
+                src="/icon-transparent.png"
                 width={36}
                 height={36}
                 alt="Logo"
